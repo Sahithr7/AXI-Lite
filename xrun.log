@@ -1,0 +1,129 @@
+xrun: 23.03-s001: (c) Copyright 1995-2023 Cadence Design Systems, Inc.
+TOOL:	xrun	23.03-s001: Started on Jul 10, 2025 at 16:48:28 UTC
+xrun
+	-f run.f
+		-sv
+		-timescale 1ns/1ps
+		-access +rwc
+		axilite_s.sv
+		tb.sv
+	-gui
+Recompiling... reason: file './tb.sv' is newer than expected.
+	expected: Thu Jul 10 16:16:16 2025
+	actual:   Thu Jul 10 16:48:15 2025
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Top level design units:
+		$unit_0x3f4bc98d
+		tb
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.axilite_s:sv <0x5b0388b6>
+			streams:  21, words: 10300
+		worklib.tb:sv <0x1be9b397>
+			streams:  30, words: 14656
+		worklib.axi_if:sv <0x1adcb401>
+			streams:  77, words: 84380
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                     Instances  Unique
+		Modules:                     2       2
+		Interfaces:                  1       1
+		Registers:                  72      96
+		Scalar wires:               17       -
+		Vectored wires:              9       -
+		Named events:                2       5
+		Always blocks:               2       2
+		Initial blocks:              7       7
+		Parallel blocks:             1       1
+		Pseudo assignments:         18       -
+		Assertions:                  1       1
+		Compilation units:           1       1
+		SV Class declarations:       5       5
+		SV Class specializations:    5       5
+		Simulation timescale:      1ps
+	Writing initial simulation snapshot: worklib.tb:sv
+xmsim: *W,NOMTDGUI: Multi-Threaded Dumping is disabled for interactive debug mode.
+SVSEED default: 1
+
+-------------------------------------
+Relinquished control to SimVision...
+xcelium> 
+xcelium> source /opt/cadence/xcelium/tools/xcelium/files/xmsimrc
+xcelium> database -open waves -into waves.shm -default
+Created default SHM database waves
+xcelium> probe -create -shm tb.vif.araddr tb.vif.arready tb.vif.arvalid tb.vif.awaddr tb.vif.awready tb.vif.awvalid tb.vif.bready tb.vif.bvalid tb.vif.clk tb.vif.rdata tb.vif.resetn tb.vif.rready tb.vif.rresp tb.vif.rvalid tb.vif.wdata tb.vif.wready tb.vif.wresp tb.vif.wvalid tb.dut.mem
+Created probe 1
+xcelium> run
+-----------------[DRV] : RESET DONE-----------------------------
+stop -create -name Randomize -randomize
+Created stop Randomize
+
+[GEN] : OP : 1 awaddr : 4 wdata : 4 araddr : 2
+[DRV] : OP : 1 awaddr : 4 wdata : 4 
+[MON] : OP : 1 awaddr : 4 wdata : 4 wresp:0
+[SCO] : OP : 1 awaddr : 4 wdata : 4 wresp : 0
+[SCO] : DATA STORED ADDR :4 and DATA :4
+----------------------------------------------------
+[GEN] : OP : 0 awaddr : 3 wdata : 2 araddr : 4
+[DRV] : OP : 0 araddr : 4 
+[MON] : OP : 0 araddr : 4 rdata : 4 rresp:0
+[SCO] : OP : 0 araddr : 4 rdata : 4 rresp : 0
+[SCO] : DATA MATCHED
+----------------------------------------------------
+[GEN] : OP : 0 awaddr : 3 wdata : 4 araddr : 4
+[DRV] : OP : 0 araddr : 4 
+[MON] : OP : 0 araddr : 4 rdata : 4 rresp:0
+[SCO] : OP : 0 araddr : 4 rdata : 4 rresp : 0
+[SCO] : DATA MATCHED
+----------------------------------------------------
+[GEN] : OP : 1 awaddr : 1 wdata : 9 araddr : 4
+[DRV] : OP : 1 awaddr : 1 wdata : 9 
+[MON] : OP : 1 awaddr : 1 wdata : 9 wresp:0
+[SCO] : OP : 1 awaddr : 1 wdata : 9 wresp : 0
+[SCO] : DATA STORED ADDR :1 and DATA :9
+----------------------------------------------------
+[GEN] : OP : 0 awaddr : 4 wdata : 9 araddr : 1
+[DRV] : OP : 0 araddr : 1 
+[MON] : OP : 0 araddr : 1 rdata : 9 rresp:0
+[SCO] : OP : 0 araddr : 1 rdata : 9 rresp : 0
+[SCO] : DATA MATCHED
+----------------------------------------------------
+[GEN] : OP : 1 awaddr : 1 wdata : 7 araddr : 3
+[DRV] : OP : 1 awaddr : 1 wdata : 7 
+[MON] : OP : 1 awaddr : 1 wdata : 7 wresp:0
+[SCO] : OP : 1 awaddr : 1 wdata : 7 wresp : 0
+[SCO] : DATA STORED ADDR :1 and DATA :7
+----------------------------------------------------
+[GEN] : OP : 1 awaddr : 1 wdata : 10 araddr : 4
+[DRV] : OP : 1 awaddr : 1 wdata : 10 
+[MON] : OP : 1 awaddr : 1 wdata : 10 wresp:0
+[SCO] : OP : 1 awaddr : 1 wdata : 10 wresp : 0
+[SCO] : DATA STORED ADDR :1 and DATA :10
+----------------------------------------------------
+[GEN] : OP : 0 awaddr : 1 wdata : 0 araddr : 2
+[DRV] : OP : 0 araddr : 2 
+[MON] : OP : 0 araddr : 2 rdata : 0 rresp:0
+[SCO] : OP : 0 araddr : 2 rdata : 0 rresp : 0
+[SCO] : DATA MATCHED
+----------------------------------------------------
+[GEN] : OP : 1 awaddr : 1 wdata : 2 araddr : 2
+[DRV] : OP : 1 awaddr : 1 wdata : 2 
+[MON] : OP : 1 awaddr : 1 wdata : 2 wresp:0
+[SCO] : OP : 1 awaddr : 1 wdata : 2 wresp : 0
+[SCO] : DATA STORED ADDR :1 and DATA :2
+----------------------------------------------------
+[GEN] : OP : 0 awaddr : 2 wdata : 10 araddr : 2
+[DRV] : OP : 0 araddr : 2 
+[MON] : OP : 0 araddr : 2 rdata : 0 rresp:0
+[SCO] : OP : 0 araddr : 2 rdata : 0 rresp : 0
+[SCO] : DATA MATCHED
+----------------------------------------------------
+Simulation complete via $finish(1) at time 795 NS + 4
+./tb.sv:326     $finish;
+xcelium> ^C
+xcelium> exit
+...Regained control from SimVision
+-------------------------------------
+TOOL:	xrun	23.03-s001: Exiting on Jul 10, 2025 at 17:11:43 UTC  (total: 00:23:15)

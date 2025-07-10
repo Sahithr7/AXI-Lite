@@ -1,8 +1,0 @@
-//
-// File created by:  xrun
-// Do not modify this file
-
-s1::(07Jul2025:00:50:39):( xrun -f run.f -gui )
-s2::(07Jul2025:00:51:38):( xrun -f run.f -gui )
-s3::(07Jul2025:00:54:18):( xrun -f run.f -gui )
-s4::(07Jul2025:01:15:59):( xrun -f run.f -gui )
