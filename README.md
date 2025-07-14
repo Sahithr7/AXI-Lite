@@ -16,44 +16,45 @@ The module defines the standard AXI4-Lite slave ports:
 
 | Port Name | Direction | Width | Description |
 | :---- | :---- | :---- | :---- |
-| s\_axi\_aclk | Input | 1 bit | AXI clock |
-| s\_axi\_aresetn | Input | 1 bit | AXI active-low reset |
-| s\_axi\_awvalid | Input | 1 bit | Write address valid |
-| s\_axi\_awready | Output | 1 bit | Write address ready |
-| s\_axi\_awaddr | Input | 32 bits | Write address |
-| s\_axi\_wvalid | Input | 1 bit | Write data valid |
-| s\_axi\_wready | Output | 1 bit | Write data ready |
-| s\_axi\_wdata | Input | 32 bits | Write data |
-| s\_axi\_bvalid | Output | 1 bit | Write response valid |
-| s\_axi\_bready | Input | 1 bit | Write response ready |
-| s\_axi\_bresp | Output | 2 bits | Write response (OKAY, SLVERR, DECERR) |
-| s\_axi\_arvalid | Input | 1 bit | Read address valid |
-| s\_axi\_arready | Output | 1 bit | Read address ready |
-| s\_axi\_araddr | Input | 32 bits | Read address |
-| s\_axi\_rvalid | Output | 1 bit | Read data valid |
-| s\_axi\_rready | Input | 1 bit | Read data ready |
-| s\_axi\_rdata | Output | 32 bits | Read data |
-| s\_axi\_rresp | Output | 2 bits | Read response (OKAY, SLVERR, DECERR) |
+| `s_axi_aclk`    | Input     | 1 bit   | AXI clock                                   |
+| `s_axi_aresetn` | Input     | 1 bit   | AXI active-low reset                        |
+| `s_axi_awvalid` | Input     | 1 bit   | Write address valid                         |
+| `s_axi_awready` | Output    | 1 bit   | Write address ready                         |
+| `s_axi_awaddr`  | Input     | 32 bits | Write address                               |
+| `s_axi_wvalid`  | Input     | 1 bit   | Write data valid                            |
+| `s_axi_wready`  | Output    | 1 bit   | Write data ready                            |
+| `s_axi_wdata`   | Input     | 32 bits | Write data                                  |
+| `s_axi_bvalid`  | Output    | 1 bit   | Write response valid                        |
+| `s_axi_bready`  | Input     | 1 bit   | Write response ready                        |
+| `s_axi_bresp`   | Output    | 2 bits  | Write response (OKAY, SLVERR, DECERR)       |
+| `s_axi_arvalid` | Input     | 1 bit   | Read address valid                          |
+| `s_axi_arready` | Output    | 1 bit   | Read address ready                          |
+| `s_axi_araddr`  | Input     | 32 bits | Read address                                |
+| `s_axi_rvalid`  | Output    | 1 bit   | Read data valid                             |
+| `s_axi_rready`  | Input     | 1 bit   | Read data ready                             |
+| `s_axi_rdata`   | Output    | 32 bits | Read data                                   |
+| `s_axi_rresp`   | Output    | 2 bits  | Read response (OKAY, SLVERR, DECERR) 
 
 ### **2.2. Internal Memory**
 
-The module includes an internal memory array mem of size 128 locations, each capable of storing 32-bit data:  
-reg \[31:0\] mem \[128\];
+The module includes an internal memory array mem of size 128 locations, each capable of storing 32-bit data: 
+
+`reg \[31:0\] mem \[128\];`
 
 ### **2.3. State Machine**
 
 The AXI Lite Slave operates based on a state machine to manage the read and write transactions. The defined states are:
 
-* idle: Initial state, waiting for a write or read address.  
-* send\_waddr\_ack: Acknowledging a write address.  
-* send\_raddr\_ack: Acknowledging a read address.  
-* send\_wdata\_ack: Acknowledging write data.  
-* update\_mem: Writing data to the internal memory.  
-* send\_wr\_err: Sending a write error response (e.g., for out-of-bounds address).  
-* send\_wr\_resp: Sending a successful write response.  
-* gen\_data: Generating read data from memory.  
-* send\_rd\_err: Sending a read error response.  
-* send\_rdata: Sending read data to the master.
+* `idle`: Initial state, waiting for a write or read address.  
+* `send\_waddr\_ack`: Acknowledging a write address.  
+* `send\_raddr\_ack`: Acknowledging a read address.  
+* `send\_wdata\_ack`: Acknowledging write data.  
+* `update\_mem`: Writing data to the internal memory.  
+* `send\_wr\_err`: Sending a write error response (e.g., for out-of-bounds address).  
+* `send\_wr\_resp`: Sending a successful write response.  
+* `gen\_data`: Generating read data from memory.  
+* `send\_rd\_err`: Sending a read error response.  
+* `send\_rdata`: Sending read data to the master.
 
 The state transitions ensure proper AXI handshake sequences. For instance, after receiving a valid write address (s\_axi\_awvalid), the slave asserts s\_axi\_awready and transitions to send\_waddr\_ack. Similarly, for read operations, s\_axi\_arvalid triggers s\_axi\_arready and a transition to send\_raddr\_ack.
 
