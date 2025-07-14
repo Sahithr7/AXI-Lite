@@ -639,10 +639,13 @@ Once you have saved the files, you can compile and run the simulation using Cade
    - `-timescale 1ns/1ps` &nbsp;&nbsp;— sets the simulation time-scale 
    
    ```sh 
-   xrun \-sv \-access \+rwc \-timescale 1ns/1ps axi\_if.sv axilite\_s.sv tb.sv
+   xrun -sv -access +rwc -timescale 1ns/1ps axilite_s.sv tb.sv
    ```
 
-   *Note: If you prefer to use a Tcl script for running, you can create a run.tcl file with run and exit commands and then use xrun \-input run.tcl as shown in the previous version.*  
+   > **Note:** I already added a `run.f` (file-list / compile script) in the directory, so you can also launch the simulation with  
+> ```sh
+> xrun -f run.f
+> ```  
 
 4. **View waveforms**  
    After the simulation completes, a `dump.vcd` file will be generated in your project directory. Open it with Cadence **SimVision** (or any compatible VCD viewer):
