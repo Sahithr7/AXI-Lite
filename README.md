@@ -607,13 +607,16 @@ To run this project, you’ll need a SystemVerilog simulator such as **Cadence X
 
 ### 5.1 Downloading the Files
 
-Save each SystemVerilog block into a separate file:
+Save each SystemVerilog block into its own file:
 
-    1. **`axilite_s.sv`** — AXI-Lite Slave module  
-    2. **`axi_if.sv`** — AXI interface definition  
-    3. **`tb.sv`** — UVM testbench components and top-level module  
+| File name      | Purpose                                               |
+| :------------- | :---------------------------------------------------- |
+| `axilite_s.sv` | AXI-Lite Slave module                                 |
+| `axi_if.sv`    | AXI interface definition                              |
+| `tb.sv`        | UVM testbench components and top-level testbench      |
 
-> **Directory suggestion:** `axi_lite_project/`
+> **Suggested directory:** `axi_lite_project/`
+
 
 ---
 
@@ -629,10 +632,12 @@ Once you have saved the files, you can compile and run the simulation using Cade
 
 3. **Compile & run the simulation**  
    Use the `xrun` command to compile the SystemVerilog files and launch the simulation:  
+   
 
    - `-sv` &nbsp;&nbsp;— enables SystemVerilog features  
    - `-access +rwc` &nbsp;&nbsp;— grants read / write / connect access for debugging  
    - `-timescale 1ns/1ps` &nbsp;&nbsp;— sets the simulation time-scale 
+   
    ```sh 
    xrun \-sv \-access \+rwc \-timescale 1ns/1ps axi\_if.sv axilite\_s.sv tb.sv
    ```
